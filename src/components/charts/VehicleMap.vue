@@ -11,7 +11,7 @@ import type { VehicleLive } from '@/types/vehicle';
 const props = defineProps<{ vehicles: VehicleLive[]; filterType?: VehicleType }>();
 
 const points = computed(() => props.vehicles
-  .filter((item) => !props.filterType || item.type !== props.filterType)
+  .filter((item) => !props.filterType || item.type === props.filterType)
   .map((item) => ({
     id: item.id,
     lat: item.lat,

@@ -7,7 +7,7 @@ export const useOrderStore = defineStore('orders', () => {
   const stats = ref<OrderStats[]>([]);
   const stream = ref(createOrderStream());
 
-  const latest = computed(() => stats.value[0]);
+  const latest = computed(() => stats.value[stats.value.length - 1]);
   const totalRevenue = computed(() => stats.value.reduce((sum, item) => sum + item.revenue, 0));
 
   function setStats(payload: OrderStats[]) {

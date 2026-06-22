@@ -17,7 +17,7 @@ export const useChargingStore = defineStore('charging', () => {
 
   const utilization = computed(() => {
     if (!piles.value.length) return 0;
-    return Math.round((piles.value.filter((item) => item.status === PileStatus.IDLE).length / piles.value.length) * 100);
+    return Math.round((piles.value.filter((item) => item.status === PileStatus.CHARGING).length / piles.value.length) * 100);
   });
 
   const todayRevenue = computed(() => piles.value.reduce((sum, item) => sum + item.todayUsage * 1.18, 0));

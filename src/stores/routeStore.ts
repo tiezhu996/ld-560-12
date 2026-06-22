@@ -11,7 +11,9 @@ export const useRouteStore = defineStore('routes', () => {
 
   function setRoutes(payload: RouteMonitor[]) {
     routes.value = payload;
-    if (payload[0]) selectedRouteId.value = payload[0].routeId;
+    if (!payload.find((item) => item.routeId === selectedRouteId.value) && payload[0]) {
+      selectedRouteId.value = payload[0].routeId;
+    }
   }
 
   function selectRoute(id: string) {
